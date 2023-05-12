@@ -1,0 +1,24 @@
+.menu {
+    width: 12rem;
+    position: absolute;
+    background-color: var(--color-bg-white);
+    transform: translateX(-50%);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+}
+
+.text {
+    display: flex;
+    border-bottom: 1px solid rgb(212, 212, 212);
+    padding: 20px;
+    align-items: center;
+    color: var(--color-text-black);
+}
+
+.textLink:hover {
+    color: var(--color-text-purple);
+}
+
+.icon {
+    margin-right: 0.5rem;
+}
