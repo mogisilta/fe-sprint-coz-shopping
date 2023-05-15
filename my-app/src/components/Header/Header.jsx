@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import styles from "./Header.module.css";
 import { RxHamburgerMenu } from 'react-icons/rx';
 import Menu from "../Menu/Menu";
-
 export default function Header() {
     const [isShow,setShow] = useState(false);
     const handleShow = () => {
