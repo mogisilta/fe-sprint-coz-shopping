@@ -1,0 +1,36 @@
+header {
+    display: flex;
+    width: 100vw;
+    height: 4rem;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--color-bg-white);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0px;
+    left: 0px;
+}
+
+.textLogo{
+    display: flex;
+    align-items: center;
+    color: var(--color-text-black);
+}
+
+h1 {
+    padding: 1rem;
+}
+
+.menuContainer {
+    position: relative;
+}
+
+.hamburger{
+    cursor: pointer;
+    font-size: 2rem;
+}
+
+img {
+    width: 55px;
+    height: 30px;
+}

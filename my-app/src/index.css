@@ -1,0 +1,15 @@
+:root {
+    --color-bg-white: #F5F5F5;
+    --color-text-black: #000000;
+    --color-text-purple: #452CDD;
+
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
