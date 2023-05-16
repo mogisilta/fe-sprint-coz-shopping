@@ -2,12 +2,20 @@ import axios from 'axios';
 
 export const UPDATE = "UPDATE";
 export const FETCH_DATA = 'FETCH_DATA';
+export const SET_INITIAL = 'SET_INITIAL';
 
 export const update = (id) => {
     return {
         type: UPDATE,
         payload: id,
     }
+}
+
+export const setInitial = (list) => {
+  return {
+    type: SET_INITIAL,
+    payload: list,
+  }
 }
 
 export const fetchData = () => async (dispatch) => {

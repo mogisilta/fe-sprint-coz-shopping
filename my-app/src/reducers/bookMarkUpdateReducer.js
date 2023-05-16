@@ -1,5 +1,5 @@
 import { initialState } from "./initialState";
-import { UPDATE, FETCH_DATA } from "../actions/index";
+import { UPDATE, FETCH_DATA, SET_INITIAL } from "../actions/index";
 
 export const bookMarkUpdateReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -13,6 +13,8 @@ export const bookMarkUpdateReducer = (state = initialState, action) => {
                 }
             })
         case FETCH_DATA:
+            return action.payload;
+        case SET_INITIAL:
             return action.payload;
         default:
             return state;
