@@ -9,6 +9,7 @@ header {
     position: sticky;
     top: 0px;
     left: 0px;
+    z-index: 2;
 }
 
 .textLogo{
@@ -22,7 +23,7 @@ h1 {
 }
 
 .menuContainer {
-    position: relative;
+    position: relative; 
 }
 
 .hamburger{
@@ -33,4 +34,8 @@ h1 {
 img {
     width: 55px;
     height: 30px;
+}
+
+.dropDown{
+    position: relative;
 }

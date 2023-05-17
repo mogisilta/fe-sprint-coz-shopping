@@ -20,24 +20,31 @@ export default function ItemCard({item}) {
         isMarked ? dispatch(showToast('북마크 삭제 됐어요')) : dispatch(showToast('북마크 추가 됐어요'));
         dispatch(update(id));
     }
-    const cardInfo = {
-        [ItemType.Category]: {imageSrc: 'image_url', text: ["title"], etc: ['#']},
-        [ItemType.Exhibition]: {imageSrc: 'image_url', text: ["title","sub_title"], etc: []},
-        [ItemType.Brand]: {imageSrc: 'brand_image_url', text: ["brand_name","follower"], etc: ['관심고객수','명']},
-        [ItemType.Product]: {imageSrc: 'image_url', text: ["title","discountPercentage","price"], etc: ["%",'원']},
-    }
-    const data = cardInfo[item.type];
+    const {id, title, sub_title, brand_name, discountPercentage, price, image_url, brand_image_url, follower, bookMark, type}= item;
     return (
         <div className={styles.card}>
             <div className={styles.imageContainer}>
-                <img className={styles.image} src={`${item[data.imageSrc]}`} alt={item.type}/>
-                <AiFillStar className={item.bookMark ? styles.starfilled : styles.star} onClick={()=>handleUpdate(item.id,item.bookMark)}/>
+                <img className={styles.image} src={image_url ? image_url : brand_image_url} alt={ItemType.Category}/>
+                <AiFillStar className={bookMark ? styles.starfilled : styles.star} onClick={()=>handleUpdate(id,bookMark)}/>
             </div>
-            <div className={styles.itemInfo}>
-                {data.text.map((el,idx)=><p key={idx}>{item[el]}</p>)}
-                {data.etc.map((el,idx)=><p key={idx}>{el}</p>)}
-            </div>
+            {ItemType.Category===type && <h3>#{title}</h3>}
+            {ItemType.Exhibition===type && <> <h3>{title}</h3> <p>{sub_title}</p> </>}
+            {ItemType.Brand===type && 
+                    <div className={styles.itemInfo}>
+                        <h3>{brand_name}</h3>
+                            <div>
+                                <h3>관심고객수</h3>
+                                <p>{follower}명</p>
+                            </div>
+                    </div>}
+            {ItemType.Product===type && 
+                    <div className={styles.itemInfo}>
+                        <h3>{title}</h3>
+                        <div>
+                            <p className={styles.discount}>{discountPercentage}%</p>
+                            <p>{price}원</p>
+                        </div>
+                    </div>}
         </div>
-        )
-        
+    )
 }

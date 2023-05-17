@@ -17,7 +17,7 @@ export default function Header() {
             </Link>
             <div className={styles.menuContainer}>
                 <RxHamburgerMenu className={styles.hamburger} onClick={handleShow}/>
-                {isShow ? <Menu/> : null}
+                {isShow ? <Menu className={styles.dropDown}/> : null}
             </div>
         </header>
     )
