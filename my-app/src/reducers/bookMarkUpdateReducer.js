@@ -1,6 +1,6 @@
-import { initialState } from "./initialState";
-import { UPDATE, FETCH_DATA, SET_INITIAL } from "../actions/index";
-
+import { UPDATE, SET_INITIAL } from "../actions/index";
+import { FETCH_DATA } from "../thunk/index";
+const initialState = [];
 export const bookMarkUpdateReducer = (state = initialState, action) => {
     switch (action.type) {
         case UPDATE:

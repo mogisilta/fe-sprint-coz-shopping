@@ -1,8 +1,8 @@
-import axios from 'axios';
 
 export const UPDATE = "UPDATE";
-export const FETCH_DATA = 'FETCH_DATA';
 export const SET_INITIAL = 'SET_INITIAL';
+export const SHOW_TOAST = 'SHOW_TOAST';
+export const HIDE_TOAST = 'HIDE_TOAST';
 
 export const update = (id) => {
     return {
@@ -18,12 +18,6 @@ export const setInitial = (list) => {
   }
 }
 
-export const fetchData = () => async (dispatch) => {
-  try {
-    const response = await axios.get('http://cozshopping.codestates-seb.link/api/v1/products');
-    const products = response.data.map((item) => ({ ...item, bookMark: false }));
-    dispatch({ type: FETCH_DATA, payload: products });
-  } catch (error) {
-    console.error(error);
-  }
-};
+export const showToast = (message) => ({ type: SHOW_TOAST, payload: message });
+
+export const hideToast = () => ({ type: HIDE_TOAST });
