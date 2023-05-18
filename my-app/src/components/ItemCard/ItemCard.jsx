@@ -1,12 +1,10 @@
-import React from "react";
-import {useDispatch} from 'react-redux';
+import React,{useState} from "react";
 import styles from "./ItemCard.module.css";
-import EmptyCard from "../EmptyCard/EmptyCard";
-import { AiFillStar } from 'react-icons/ai';
-import { update } from '../../actions/index';
-import { showToast } from "../../actions/index";
+import CardImage from "../CardImage/CardImage";
+import Modal from "../Modal/Modal";
 
 export const ItemType = Object.freeze({
+    All: "All",
     Category: "Category",
     Exhibition: "Exhibition",
     Brand: "Brand",
@@ -14,19 +12,18 @@ export const ItemType = Object.freeze({
 })
 
 export default function ItemCard({item}) {
-    const dispatch = useDispatch();
-    const handleUpdate = (id,bookMark) => {
-        const isMarked = bookMark;
-        isMarked ? dispatch(showToast('북마크 삭제 됐어요')) : dispatch(showToast('북마크 추가 됐어요'));
-        dispatch(update(id));
+    const {title, sub_title, brand_name, discountPercentage, price, follower, type}= item;
+    const [showModal,setModal] = useState(false);
+
+    const handleModal= () => {
+        setModal(!showModal);
     }
-    const {id, title, sub_title, brand_name, discountPercentage, price, image_url, brand_image_url, follower, bookMark, type}= item;
+
     return (
-        <div className={styles.card}>
-            <div className={styles.imageContainer}>
-                <img className={styles.image} src={image_url ? image_url : brand_image_url} alt={ItemType.Category}/>
-                <AiFillStar className={bookMark ? styles.starfilled : styles.star} onClick={()=>handleUpdate(id,bookMark)}/>
-            </div>
+        <>
+        <div className={styles.card} onClick={handleModal}>
+            <CardImage item={item}/>
+            {/* ItemType별로 카드 정보를 표시 */}
             {ItemType.Category===type && <h3>#{title}</h3>}
             {ItemType.Exhibition===type && <> <h3>{title}</h3> <p>{sub_title}</p> </>}
             {ItemType.Brand===type && 
@@ -46,5 +43,7 @@ export default function ItemCard({item}) {
                         </div>
                     </div>}
         </div>
+        {showModal && <Modal item={item} handleModal={handleModal}/>}
+        </>
     )
 }
