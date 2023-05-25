@@ -1,0 +1,15 @@
+.toast{
+    width: 200px;
+    height: 50px;
+    background-color: var(--color-bg-white);
+    color: var(--color-text-black);
+    bottom: 20%;
+    right: 5%;
+    font-weight: 700;
+    position: absolute;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
